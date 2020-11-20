@@ -1,0 +1,44 @@
+window.onload=function get(){
+var BaseURL = 'http://thungghuan.xyz:3000'
+var getRequest = new XMLHttpRequest()
+getRequest.open('GET', BaseUPL + '/users',true)
+getRequest.send()
+getRequest.onreadystatechange=function(){
+    if(getRequest.readyState==4){
+        if (getRequest.status==200){
+        console.log(getRequest.responseText)
+        var a ='<ul>'
+        var b = eval(getRequest.responseText)
+        for(var i=0;i<b.length;i++)
+        {
+            a += '<li>' +b[i] +'</li>'
+        }
+        a+='</ul>'
+        document.getElementById('ul').innerHTML=ul;
+    }
+       else {alert(getRequest.responseText)}
+    }
+}
+    function post(){
+    var BaseURL = 'http://thungghuan.xyz:3000'
+var postRequest = new XMLHttpRequest()
+postRequest.open('POST', BaseURL + '/add',true)
+name=document.getElementById('name').value
+num=document.getElementById('num').value
+var postData = {
+    'name': name,
+    'num': string(num)
+}
+postRequest.setRequestHeader("Content-type","application/json")
+postRequest.send(JSON.stringify(postData))
+postRequest.onreadystatechange = function(){
+    if (postRequest.readyState == 4) {
+        if (postRequest.status == 200) { 
+            console.log(postRequest.responseText)
+           } 
+           else 
+           { alert(postRequest.responseText)}
+           }
+        }
+    }
+}
